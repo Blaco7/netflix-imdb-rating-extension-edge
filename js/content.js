@@ -41,10 +41,12 @@ chrome.runtime.onMessage.addListener(
             if (shouldSendRequestForRating()) {
                 console.log("should send!");
                 // Get the media title
-                const titleContainer = document.getElementsByClassName("previewModal--player-titleTreatment-logo")[0];
-                const mediaTitle = titleContainer.getAttribute("alt");
-                chrome.runtime.sendMessage({"mediaTitle": mediaTitle}
-                );
+                setTimeout(function () {
+                    const titleContainer = document.getElementsByClassName("previewModal--player-titleTreatment-logo")[0];
+                    const mediaTitle = titleContainer.getAttribute("alt");
+                    chrome.runtime.sendMessage({"mediaTitle": mediaTitle});
+                }, 100);
+
 
             } else {
                 console.log("should not send");
